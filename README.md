@@ -2,7 +2,7 @@
 
 O Organo é a plataforma de cadastro de colaboradores para sua empresa.
 
-<img src="https://uploaddeimagens.com.br/images/004/812/840/original/Untitled.png" width="800px;"  alt="Foto de Alex Lima no GitHub"/><br>
+<img src="https://uploaddeimagens.com.br/images/004/812/840/original/Untitled.png" width="900px;"  alt="Foto de Alex Lima no GitHub"/><br>
 
 ## 🛠️ Construído com
 
