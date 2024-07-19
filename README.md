@@ -13,8 +13,6 @@ O Organo é a plataforma de cadastro de colaboradores para sua empresa.
 
 ## 🛠️ Construído com
 
-Mencione as ferramentas que você usou para criar seu projeto
-
 * [React](https://reactjs.org/) - Biblioteca para construção de interfaces de usuário
 * [React DOM](https://reactjs.org/docs/react-dom.html) - API para manipulação do DOM com React
 * [React Hook Form](https://react-hook-form.com/) - Gerenciamento de formulários no React
