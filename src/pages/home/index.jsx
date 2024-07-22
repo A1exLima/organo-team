@@ -56,6 +56,14 @@ export function Home() {
     )
   }, [])
 
+  const handleDeleteButton = (collaboratorId) => {
+    setCollaborators((prevCollaborators) => {
+      return prevCollaborators.filter(
+        (collaborator) => collaborator.id !== collaboratorId,
+      )
+    })
+  }
+
   useEffect(() => {
     localStorage.setItem(
       'organo-collaboratorData',
@@ -140,6 +148,7 @@ export function Home() {
                           data={member}
                           highlightColor={highlight}
                           handleLikeButton={handleLikeButton}
+                          handleDeleteButton={handleDeleteButton}
                         />
                       </SwiperSlide>
                     ))}

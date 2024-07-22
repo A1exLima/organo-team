@@ -23,7 +23,7 @@ export const CardContainer = styled.div`
     padding-top: 9.1rem;
     position: relative;
 
-    > div {
+    > div:nth-child(1) {
       cursor: pointer;
       width: 2.5rem;
       height: 2.5rem;
@@ -39,6 +39,28 @@ export const CardContainer = styled.div`
         font-size: 2.2rem;
         color: ${(props) =>
           props.$likeColor ? props.theme.violet : props.theme.violet};
+
+        transition: transform 0.3s ease-in-out;
+
+        &:hover {
+          transform: scale(1.1);
+        }
+      }
+    }
+
+    > div:nth-child(2) {
+      cursor: pointer;
+      position: absolute;
+      top: 2.2rem;
+      left: 2.4rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      > svg {
+        display: flex;
+        font-size: 2.4rem;
+        color: ${(props) => props.theme.black};
 
         transition: transform 0.3s ease-in-out;
 
