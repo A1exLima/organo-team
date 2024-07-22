@@ -1,5 +1,5 @@
 import { Content, ContainerCard, TeamBox, Footer, HomeContainer } from './style'
-import { useEffect, useState } from 'react'
+import { useCallback, useEffect, useState } from 'react'
 
 import { Swiper, SwiperSlide } from 'swiper/react'
 import 'swiper/css'
@@ -45,6 +45,16 @@ export function Home() {
   const handleClickAddCardCollaborator = () => {
     setToggleFormScreen((prevState) => !prevState)
   }
+
+  const handleLikeButton = useCallback((collaboratorId, like) => {
+    setCollaborators((prevCollaborators) =>
+      prevCollaborators.map((collaborator) =>
+        collaborator.id === collaboratorId
+          ? { ...collaborator, like }
+          : collaborator,
+      ),
+    )
+  }, [])
 
   useEffect(() => {
     localStorage.setItem(
@@ -102,10 +112,7 @@ export function Home() {
                     spaceBetween={24}
                     centeredSlides={false}
                     slidesPerView={1}
-                    autoplay={{
-                      delay: 3000,
-                      disableOnInteraction: false,
-                    }}
+                    autoplay={false}
                     pagination={{
                       clickable: true,
                     }}
@@ -129,7 +136,11 @@ export function Home() {
                   >
                     {teamMembers.map((member) => (
                       <SwiperSlide key={member.id}>
-                        <Card data={member} highlightColor={highlight} />
+                        <Card
+                          data={member}
+                          highlightColor={highlight}
+                          handleLikeButton={handleLikeButton}
+                        />
                       </SwiperSlide>
                     ))}
                   </Swiper>

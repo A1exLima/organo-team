@@ -1,10 +1,23 @@
 import { CardContainer } from './style'
 import avatar from '../../assets/icons/defaultAvatar.png'
+import { FaRegHeart, FaHeart } from 'react-icons/fa'
+import { useEffect, useState } from 'react'
 
-export const Card = ({ data, highlightColor }) => {
+export const Card = ({ data, highlightColor, handleLikeButton }) => {
+  const [like, setLike] = useState(data.like)
+
+  const likeButton = () => {
+    setLike((prevState) => !prevState)
+  }
+
+  useEffect(() => {
+    handleLikeButton(data.id, like)
+  }, [data.id, handleLikeButton, like])
+
   return (
-    <CardContainer $highlightColor={highlightColor}>
+    <CardContainer $highlightColor={highlightColor} $likeColor={like}>
       <figure>
+        <div onClick={likeButton}> {like ? <FaHeart /> : <FaRegHeart />} </div>
         <img
           src={data.image || avatar}
           alt={`Imagem do colaborador: ${data.name}`}
