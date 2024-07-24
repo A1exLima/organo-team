@@ -7,7 +7,7 @@ import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 import * as Zod from 'zod'
 
-import { backgroundTeamsColors } from '../../styles/themes/teamsColors'
+import { backgroundTeamsColorsDefault } from '../../styles/themes/teamsColors'
 
 const validationSchema = Zod.object({
   name: Zod.string().min(3, 'O nome deve ter pelo menos 3 caracteres').max(50),
@@ -27,7 +27,7 @@ export const FormField = ({
   formDataToRegisterCollaborator,
   toggleFormScreen,
 }) => {
-  const nameOfEachTeam = Object.keys(backgroundTeamsColors)
+  const nameOfEachTeam = Object.keys(backgroundTeamsColorsDefault)
 
   const {
     register,

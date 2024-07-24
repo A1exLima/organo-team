@@ -1,4 +1,4 @@
-export const backgroundTeamsColors = {
+export const backgroundTeamsColorsDefault = {
   Programação: '#D9F7E9',
   'Front End': '#E8F8FF',
   'Data Science': '#F0F8E2',
@@ -8,7 +8,7 @@ export const backgroundTeamsColors = {
   'Inovação e Gestão': '#FFEEDF',
 }
 
-export const TeamHighlightColor = {
+export const TeamHighlightColorDefault = {
   Programação: '#57C278',
   'Front End': '#82CFFA',
   'Data Science': '#A6D157',

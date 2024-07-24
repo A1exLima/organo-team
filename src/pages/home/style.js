@@ -1,4 +1,13 @@
 import { styled } from 'styled-components'
+import { MuiColorInput } from 'mui-color-input'
+
+export const StyledMuiColorInput = styled(MuiColorInput)`
+  .MuiOutlinedInput-root {
+    width: 24rem;
+    font-size: 1.4rem;
+    font-weight: 600;
+  }
+`
 
 export const HomeContainer = styled.div`
   height: 100vh;
@@ -87,11 +96,33 @@ export const ContainerCard = styled.article`
 `
 
 export const TeamBox = styled.section`
+  position: relative;
   min-height: 43.8rem;
   padding-top: 3.4rem;
   background-color: ${(props) => props.$background};
+  padding: 15.4rem 4rem 3.4rem 4rem;
 
-  padding: 3.4rem 4rem 0 4rem;
+  .color-box {
+    position: absolute;
+    top: 2.8rem;
+    right: 4rem;
+    z-index: 2;
+
+    display: flex;
+    flex-direction: row-reverse;
+    flex-wrap: wrap;
+    gap: 1rem;
+
+    > div {
+      > p {
+        text-align: center;
+        font-size: 1.5rem;
+        font-weight: 600;
+        margin-bottom: 0.5rem;
+        color: ${(props) => props.theme.black};
+      }
+    }
+  }
 
   .box-card {
     max-width: 112.1rem;
