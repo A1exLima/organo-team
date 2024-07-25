@@ -22,6 +22,7 @@ O Organo é a plataforma de cadastro de colaboradores para sua empresa.
 * [Styled Components](https://styled-components.com/) - Estilização baseada em componentes
 * [Swiper](https://swiperjs.com/react) - Biblioteca para criação de carrosséis
 * [localStorage](https://developer.mozilla.org/en-US/docs/Web/API/Window/localStorage) - Armazenamento de dados no navegador
+* [mui-color-input](https://viclafouch.github.io/mui-color-input/) - Extensão do Material-UI que fornece um componente de entrada de cor personalizado
 
 ---
 <h2>🧑🏻‍💻 Autor</h2>
