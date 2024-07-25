@@ -17,7 +17,16 @@ export const HomeContainer = styled.div`
 `
 
 export const Content = styled.article`
+  max-width: 144rem;
+  margin: 0 auto;
   padding: 0 4rem;
+  display: flex;
+  gap: 4rem;
+
+  @media (max-width: 1020px) {
+    flex-direction: column;
+    gap: 0rem;
+  }
 `
 
 export const ContainerCard = styled.article`

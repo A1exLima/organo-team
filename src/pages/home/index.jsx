@@ -21,12 +21,13 @@ import { FormField } from '../../components/formField'
 import { Title } from '../../components/title'
 
 import {
-  TeamHighlightColorDefault,
+  TeamHighlightColorsDefault,
   backgroundTeamsColorsDefault,
 } from '../../styles/themes/teamsColors'
 
 import addCard from '../../assets/icons/addCard.png'
 import footer from '../../assets/images/footer.png'
+import { CreateTeamFormField } from '../../components/createTeamFormField'
 
 export function Home() {
   const [collaborators, setCollaborators] = useState(() => {
@@ -39,7 +40,7 @@ export function Home() {
     return storedData ? JSON.parse(storedData) : {}
   })
 
-  const [teamHighlightColor, setTeamHighlightColor] = useState(() => {
+  const [teamHighlightColors, setTeamHighlightColor] = useState(() => {
     const storedData = localStorage.getItem('organo-teamHighlightColorData')
     return storedData ? JSON.parse(storedData) : {}
   })
@@ -47,6 +48,8 @@ export function Home() {
   const [collaboratorsByTeam, setCollaboratorsByTeam] = useState({})
 
   const [toggleFormScreen, setToggleFormScreen] = useState(false)
+
+  const [toggleFormNewTeamScreen, setToggleFormNewTeamScreen] = useState(false)
 
   const handleDataCollaborator = (formData) => {
     const newId = new Date().getTime()
@@ -59,8 +62,30 @@ export function Home() {
     setCollaborators((prevState) => [...prevState, collaborator])
   }
 
+  const handleDataTeamColor = (formData) => {
+    const { TeamName, colorTeam, colorCard } = formData
+
+    const objectBackgroundTeamsColors = {
+      ...backgroundTeamsColors,
+      [TeamName]: colorTeam,
+    }
+
+    const objectTeamHighlightColors = {
+      ...teamHighlightColors,
+      [TeamName]: colorCard,
+    }
+
+    setBackgroundTeamsColors(objectBackgroundTeamsColors)
+    setTeamHighlightColor(objectTeamHighlightColors)
+    setToggleFormNewTeamScreen(false)
+  }
+
   const handleClickAddCardCollaborator = () => {
     setToggleFormScreen((prevState) => !prevState)
+  }
+
+  const handleClickAddNewTeam = () => {
+    setToggleFormNewTeamScreen((prevState) => !prevState)
   }
 
   const handleLikeButton = useCallback((collaboratorId, like) => {
@@ -133,19 +158,19 @@ export function Home() {
   }, [backgroundTeamsColors])
 
   useEffect(() => {
-    if (Object.keys(teamHighlightColor).length === 0) {
+    if (Object.keys(teamHighlightColors).length === 0) {
       localStorage.setItem(
         'organo-teamHighlightColorData',
-        JSON.stringify(TeamHighlightColorDefault),
+        JSON.stringify(TeamHighlightColorsDefault),
       )
-      setTeamHighlightColor(TeamHighlightColorDefault)
+      setTeamHighlightColor(TeamHighlightColorsDefault)
     } else {
       localStorage.setItem(
         'organo-teamHighlightColorData',
-        JSON.stringify(teamHighlightColor),
+        JSON.stringify(teamHighlightColors),
       )
     }
-  }, [teamHighlightColor])
+  }, [teamHighlightColors])
 
   return (
     <HomeContainer>
@@ -156,6 +181,13 @@ export function Home() {
           <FormField
             formDataToRegisterCollaborator={handleDataCollaborator}
             toggleFormScreen={toggleFormScreen}
+            backgroundTeamsColorsDefault={backgroundTeamsColors}
+            buttonToggleFormCardScreen={handleClickAddNewTeam}
+          />
+
+          <CreateTeamFormField
+            formDataToRegisterTeamColor={handleDataTeamColor}
+            toggleFormScreen={toggleFormNewTeamScreen}
           />
         </Content>
 
@@ -173,7 +205,7 @@ export function Home() {
           </div>
 
           {Object.entries(collaboratorsByTeam).map(([team, teamMembers]) => {
-            const highlight = teamHighlightColor[team] || ''
+            const highlight = teamHighlightColors[team] || ''
             const background = backgroundTeamsColors[team] || ''
 
             return (

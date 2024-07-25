@@ -8,7 +8,7 @@ export const backgroundTeamsColorsDefault = {
   'Inovação e Gestão': '#FFEEDF',
 }
 
-export const TeamHighlightColorDefault = {
+export const TeamHighlightColorsDefault = {
   Programação: '#57C278',
   'Front End': '#82CFFA',
   'Data Science': '#A6D157',

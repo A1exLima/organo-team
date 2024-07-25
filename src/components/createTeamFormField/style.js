@@ -2,7 +2,7 @@ import { styled } from 'styled-components'
 
 export const FormContainer = styled.form`
   display: ${(props) => (props.$toggleFormScreen ? 'block' : 'none')};
-  width: 112.1rem;
+  max-width: 112.1rem;
   margin: 4rem auto;
   margin-bottom: 0;
   border-radius: 2rem;
@@ -25,30 +25,23 @@ export const FormContainer = styled.form`
     color: ${(props) => props.theme.red};
   }
 
-  .container-input-select {
-    display: flex;
-    align-items: center;
-    gap: 2rem;
-
-    > button {
-      opacity: 85%;
-      width: 20rem;
+  .input-color {
+    margin-bottom: 2.9rem;
+    > label {
       cursor: pointer;
-      border: 2px solid transparent;
-      background-color: ${(props) => props.theme.violet};
-      padding: 1.7rem 1rem;
-      border-radius: 1rem;
-      color: ${(props) => props.theme.white};
+      font-weight: 600;
       font-size: 1.8rem;
-      font-weight: 700;
-      text-align: center;
-
-      transition: all 0.3s ease-in-out;
-
-      &:hover {
-        border: 2px solid ${(props) => props.theme.black};
-        opacity: 100%;
-      }
+      line-height: 2.19rem;
+    }
+    > input {
+      margin-top: 0.8rem;
+      padding: 0.8rem;
+      width: 100%;
+      height: 6rem;
+      background-color: ${({ theme }) => theme.white};
+      border-radius: 0.5rem;
+      border: none;
+      box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
     }
   }
 

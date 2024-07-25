@@ -7,8 +7,6 @@ import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 import * as Zod from 'zod'
 
-import { backgroundTeamsColorsDefault } from '../../styles/themes/teamsColors'
-
 const validationSchema = Zod.object({
   name: Zod.string().min(3, 'O nome deve ter pelo menos 3 caracteres').max(50),
   office: Zod.string()
@@ -24,8 +22,10 @@ const validationSchema = Zod.object({
 })
 
 export const FormField = ({
+  backgroundTeamsColorsDefault,
   formDataToRegisterCollaborator,
   toggleFormScreen,
+  buttonToggleFormCardScreen,
 }) => {
   const nameOfEachTeam = Object.keys(backgroundTeamsColorsDefault)
 
@@ -81,12 +81,18 @@ export const FormField = ({
       />
       {errors.image && <span>{errors.image.message}</span>}
 
-      <InputTeamSelect
-        id="team"
-        label="Time"
-        listData={nameOfEachTeam}
-        {...register('team')}
-      />
+      <div className="container-input-select">
+        <InputTeamSelect
+          id="team"
+          label="Time"
+          listData={nameOfEachTeam}
+          {...register('team')}
+        />
+
+        <button type="button" onClick={buttonToggleFormCardScreen}>
+          Novo time
+        </button>
+      </div>
       {errors.team && <span>{errors.team.message}</span>}
 
       <button type="submit">Criar Card</button>
